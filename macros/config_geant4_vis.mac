@@ -1,0 +1,21 @@
+LKG4Manager/VisMode true
+LKG4Manager/G4OutputFile data/lamps_sim.root
+LKG4Manager/G4InputFile single_proton.gen
+MCSetEdepSum/persistency true
+MCStep/persistency true
+MCSecondary/persistency true
+MCTrackVertex/persistency true
+
+G4/vis/open OGL 600x600-0+0
+G4/vis/drawVolume
+G4/run/setCutForAGivenParticle e- 100. mm
+G4/vis/scene/add/axes 0 0 0 500 mm
+G4/vis/viewer/flush
+G4/vis/viewer/set/lightsVector -1 0 0
+G4/vis/viewer/set/style wireframe
+G4/vis/viewer/set/auxiliaryEdge true
+G4/vis/modeling/trajectories/create/drawByCharge
+G4/vis/scene/endOfEventAction accumulate
+G4/vis/geometry/set/visibility World 0 false
+G4/vis/viewer/set/viewpointThetaPhi 100 160
+G4/run/beamOn 1
