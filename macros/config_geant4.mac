@@ -6,6 +6,8 @@
 LKG4Manager/G4InputFile Gen/two_proton_100.gen
 LKG4Manager/G4OutputFile data/two_proton_100.root
 
+useATTPCPhysicsList true
+
 MCStep/persistency true
 MCEdepSum/persistency true
 MCSecondary/persistency true

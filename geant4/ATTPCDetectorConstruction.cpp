@@ -150,25 +150,29 @@ G4VPhysicalVolume* ATTPCDetectorConstruction::Construct()
 
   G4Box* solidTPC = new G4Box("TPC", tpcX *mm, tpcY *mm, tpcZ *mm);
   G4LogicalVolume* logicTPC = new G4LogicalVolume(solidTPC, matGas, "Detector");
-  {
-    G4VisAttributes* attTPC = new G4VisAttributes(G4Colour(G4Colour::Gray()));
-    attTPC -> SetForceWireframe(true);
-    logicTPC -> SetVisAttributes(attTPC);
+  G4VisAttributes* attTPC = new G4VisAttributes(G4Colour(G4Colour::Yellow()));
+  attTPC -> SetForceWireframe(true);
+  logicTPC -> SetVisAttributes(attTPC);
+
+  bool useATTPCPhysicsList = false;
+  if (par -> CheckPar("useATTPCPhysicsList"))
+      useATTPCPhysicsList = par -> GetParBool("useATTPCPhysicsList");
+
+  if (useATTPCPhysicsList) {
+      logicTPC -> SetUserLimits(new G4UserLimits(0.1*nm, 0.1*nm));
+      G4Region* region = new G4Region("regionTPC");
+      region -> AddRootLogicalVolume(logicTPC);
   }
-  logicTPC -> SetUserLimits(new G4UserLimits(1*mm, 1*mm));    
+  else
+      logicTPC -> SetUserLimits(new G4UserLimits(1*mm));
+
   auto pvp = new G4PVPlacement(0, G4ThreeVector(0,0,0), logicTPC, "TPC", logicWorld, false, 1, true);
   //auto pvp = new G4PVPlacement(0, G4ThreeVector(tpcX-PadWidth/2-PadGap/2,tpcY-PadHeight/2-PadGap/2,tpcZ), logicTPC, "TPC", logicWorld, false, 1, true);
   runManager -> SetSensitiveDetector(pvp);
 
   //------------------------------------------------------------------
-
   
-  new G4GlobalMagFieldMessenger(G4ThreeVector(bfieldX*tesla, bfieldY*tesla, bfieldZ*tesla));
-
-  G4Region* region = new G4Region("regionTPC");
-  region->AddRootLogicalVolume(logicTPC);
-
-  runManager->SetSensitiveDetector(pvp);
+  //new G4GlobalMagFieldMessenger(G4ThreeVector(bfieldX*tesla, bfieldY*tesla, bfieldZ*tesla));
 
   return physWorld;
 }

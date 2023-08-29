@@ -19,24 +19,27 @@ int main(int argc, char** argv)
     lk_logger("data/log");
 
     auto runManager = new LKG4RunManager();
+    runManager -> AddParameterContainer(argv[1]);
+    auto par = runManager -> GetParameterContainer();
+
+    bool useATTPCPhysicsList = false;
+    if (par -> CheckPar("useATTPCPhysicsList"))
+        useATTPCPhysicsList = par -> GetParBool("useATTPCPhysicsList");
 
     G4VModularPhysicsList* physicsList = nullptr;
-
-    if (1) {
+    if (useATTPCPhysicsList) {
         physicsList = new ATTPCPhysicsList;
-        //G4FastSimulationPhysics* fastsimPhysics = new G4FastSimulationPhysics();
-        //fastsimPhysics -> ActivateFastSimulation("e-");
-        //physicsList -> RegisterPhysics(fastsimPhysics);
+        G4FastSimulationPhysics* fastsimPhysics = new G4FastSimulationPhysics();
+        fastsimPhysics -> ActivateFastSimulation("e-");
+        physicsList -> RegisterPhysics(fastsimPhysics);
         physicsList -> RegisterPhysics(new G4StepLimiterPhysics());
     }
     else {
-        //physicsList = new QGSP_BERT_HP;
-        physicsList = new QGSP_BERT;
+        physicsList = new QGSP_BERT_HP;
         physicsList -> RegisterPhysics(new G4StepLimiterPhysics());
     }
 
     runManager -> SetUserInitialization(physicsList);
-    runManager -> AddParameterContainer(argv[1]);
     runManager -> GetPar() -> Print();
     runManager -> SetUserInitialization(new ATTPCDetectorConstruction());
 

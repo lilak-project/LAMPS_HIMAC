@@ -55,7 +55,7 @@ temperature 20.  # [°C] // To be updated
 pressure 400.  # [Torr] (38 ~ 760 Torr)
 
 ### gas Type
-detMatName 4He  # Option (p10, 4He, iC4H10, 4He_iC4H10) 
+detMatName p10  # Option (p10, 4He, iC4H10, 4He_iC4H10) 
 iC4H10Ratio 0. # [%] when choice the 4He+iC4H10 gas, input the iC4H10 ratio. (0.5 ~ 20%)
 
 ### pad Type
