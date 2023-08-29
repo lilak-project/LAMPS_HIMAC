@@ -1,9 +1,10 @@
 <input_file1 par_at-tpc.conf
 
-LKG4Manager/VisMode true
+#LKG4Manager/VisMode true
+LKG4Manager/VisMode false
 LKG4Manager/G4OutputFile data/lamps_sim.root
-LKG4Manager/G4InputFile single_proton.gen
-#LKG4Manager/G4InputFile Gen/two_proton_100.gen
+#LKG4Manager/G4InputFile single_proton.gen
+LKG4Manager/G4InputFile Gen/two_proton_100.gen
 MCSetEdepSum/persistency true
 MCStep/persistency true
 MCSecondary/persistency true

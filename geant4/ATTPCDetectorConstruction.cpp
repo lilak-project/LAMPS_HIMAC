@@ -155,7 +155,7 @@ G4VPhysicalVolume* ATTPCDetectorConstruction::Construct()
     attTPC -> SetForceWireframe(true);
     logicTPC -> SetVisAttributes(attTPC);
   }
-  logicTPC -> SetUserLimits(new G4UserLimits(.1*mm, .1*mm));    
+  logicTPC -> SetUserLimits(new G4UserLimits(1*mm, 1*mm));    
   auto pvp = new G4PVPlacement(0, G4ThreeVector(0,0,0), logicTPC, "TPC", logicWorld, false, 1, true);
   //auto pvp = new G4PVPlacement(0, G4ThreeVector(tpcX-PadWidth/2-PadGap/2,tpcY-PadHeight/2-PadGap/2,tpcZ), logicTPC, "TPC", logicWorld, false, 1, true);
   runManager -> SetSensitiveDetector(pvp);

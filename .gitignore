@@ -2,6 +2,7 @@
 *.gdml
 
 #build
+CMakeLists.txt
 build
 *.swp
 *.o
@@ -16,7 +17,6 @@ test*/
 
 #geant4 executable
 *.g4sim
-*.exe
 
 #log files created from build/run
 log/*
