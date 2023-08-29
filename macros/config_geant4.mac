@@ -1,0 +1,41 @@
+<input_file1 par_attpc.mac
+
+#LKG4Manager/VisMode true
+#LKG4Manager/G4InputFile Gen/single_proton.gen
+#LKG4Manager/G4OutputFile data/single_proton.root
+LKG4Manager/G4InputFile Gen/two_proton_100.gen
+LKG4Manager/G4OutputFile data/two_proton_100.root
+
+MCStep/persistency true
+MCEdepSum/persistency true
+MCSecondary/persistency true
+MCTrackVertex/persistency true
+
+G4/vis/open OGL600x600-0+0
+G4/vis/drawVolume
+G4/vis/scene/add/axes 0 0 0 100 mm
+G4/vis/viewer/flush
+G4/vis/scene/add/trajectories smooth
+G4/vis/modeling/trajectories/create/drawByCharge
+G4/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+G4/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+G4/vis/viewer/set/lightsVector -1 0 0
+G4/vis/viewer/set/lineSegmentsPerCircle 100
+G4/vis/viewer/set/style wireframe # surface
+G4/vis/viewer/set/auxiliaryEdge true
+G4/vis/viewer/set/hiddenMarker true
+G4/vis/viewer/set/viewpointThetaPhi 100 160
+G4/vis/viewer/set/autoRefresh true
+G4/vis/scene/endOfEventAction accumulate
+G4/vis/geometry/set/visibility World 0 false
+#G4/vis/scene/add/eventID
+#G4/vis/scene/add/frame
+#G4/vis/set/colour
+#G4/vis/set/lineWidth
+G4/vis/verbose warnings
+
+#G4/tracking/verbose 1
+G4/run/suppressPP true
+G4/run/setCutForAGivenParticle e- 1000. mm
+G4/run/beamOn 100
+G4/exit

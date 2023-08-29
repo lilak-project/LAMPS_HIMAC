@@ -13,10 +13,13 @@ input
 output
 *.root
 *.graw
+*.gen
+*.out
 test*/
 
 #geant4 executable
 *.g4sim
+*.exe
 
 #log files created from build/run
 log/*
