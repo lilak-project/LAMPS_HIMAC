@@ -8,7 +8,7 @@
 
 #include "QGSP_BERT.hh"
 #include "G4StepLimiterPhysics.hh"
-#include "DetectorConstruction.h"
+#include "ATTPCDetectorConstruction.h"
 
 int main(int argc, char** argv)
 {
@@ -21,7 +21,7 @@ int main(int argc, char** argv)
     runManager -> SetUserInitialization(physicsList);
     runManager -> AddParameterContainer(argv[1]);
     runManager -> GetPar() -> Print();
-    runManager -> SetUserInitialization(new DetectorConstruction());
+    runManager -> SetUserInitialization(new ATTPCDetectorConstruction());
     runManager -> Initialize();
     runManager -> Run(argc, argv);
 

@@ -1,6 +1,9 @@
+<input_file1 par_at-tpc.conf
+
 LKG4Manager/VisMode true
 LKG4Manager/G4OutputFile data/lamps_sim.root
 LKG4Manager/G4InputFile single_proton.gen
+#LKG4Manager/G4InputFile Gen/two_proton_100.gen
 MCSetEdepSum/persistency true
 MCStep/persistency true
 MCSecondary/persistency true
@@ -8,7 +11,7 @@ MCTrackVertex/persistency true
 
 G4/vis/open OGL 600x600-0+0
 G4/vis/drawVolume
-G4/run/setCutForAGivenParticle e- 100. mm
+#G4/run/setCutForAGivenParticle e- 100. mm
 G4/vis/scene/add/axes 0 0 0 500 mm
 G4/vis/viewer/flush
 G4/vis/viewer/set/lightsVector -1 0 0
