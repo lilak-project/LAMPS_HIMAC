@@ -13,7 +13,7 @@ MCEdepSum/persistency true
 MCSecondary/persistency true
 MCTrackVertex/persistency true
 
-G4/vis/open OGL600x600-0+0
+G4/vis/open OGL 600x600-0+0
 G4/vis/drawVolume
 G4/vis/scene/add/axes 0 0 0 100 mm
 G4/vis/viewer/flush
